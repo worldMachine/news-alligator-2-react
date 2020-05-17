@@ -3,6 +3,28 @@
   /* background-color: #1e1e1e; */
 }
 
+.nav-logo {
+  position: relative;
+  width: 50px;
+  margin-right: 25px;
+
+  /* padding-right: 1px; */
+  /* margin-left: 100%; */
+  /* padding-right: 2%; */
+}
+
+@media only screen and (max-width: 600px) {
+  .nav-logo {
+    /* position: relative; */
+    width: 35px;
+  }
+  .navbar-nav {
+    /* position: relative;
+     */
+    /* position: initial; */
+  }
+}
+
 .nav-container {
   position: fixed;
   width: 100%;
@@ -13,8 +35,12 @@
 .custom-dropdown {
   /* background-color: #1e1e1e;
   padding-right: 5%; */
-  padding-left: 1.25em;
-  padding-right: 1.25em;
+  /* padding-left: 1.25em; */
+  /* padding-right: 1.25em; */
+  /* margin-bottom: 5%; */
+  /* position: relative; */
+  /* bottom: 5px; */
+  /* float: right; */
 }
 
 .dropdown-menu {
@@ -70,7 +96,19 @@
 } */
 
 .navbar-nav {
-  padding-top: 10px;
+  /* align-items: right; */
+  /* text-align: right; */
+  /* position: fixed; */
+  /* float: right; */
+  /* right: 5%; */
+}
+.navbar-collapse {
+  /* padding-top: 10px; */
+  /* float: right; */
+  position: relative;
+  right: 0;
+  /* padding-right: 100px; */
+  /* align-items: right !important; */
 }
 
 .custom-navbar-brand {

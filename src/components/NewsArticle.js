@@ -9,6 +9,9 @@ const NewsArticle = (props) => {
   const myRef = useRef(null);
   const { showArticle, item, setOpen, isOpen } = props;
 
+  // const [setExpanded, isExpanded] = useState(false);
+  const [isExpanded, setExpanded] = useState(false);
+
   const [articleBody, setArticleBody] = useState(item.body);
 
   useEffect(() => {
@@ -28,6 +31,11 @@ const NewsArticle = (props) => {
     setOpen(!isOpen);
   };
 
+  const expandCardClicked = () => {
+    console.log("expanded card clicked ");
+    setExpanded(!isExpanded);
+  };
+
   // default img src on img error
   const addDefaultSrc = (ev) => {
     ev.target.src =
@@ -36,15 +44,18 @@ const NewsArticle = (props) => {
 
   const prettyDate = moment(item.pubDate).format("MMM Do  h:mm a");
 
+  const cardExpanded = isExpanded ? " card-expanded " : "";
+
   // console.log("showArticle is ", showArticle);
   return (
     <React.Fragment>
-      <div className=" ">
+      <div className={cardExpanded}>
         <div
           className={
-            showArticle
+            (showArticle
               ? "article-container dark-card-bg-color dark-font-color open-width"
-              : "article-container dark-card-bg-color dark-font-color collapsed-width"
+              : "article-container dark-card-bg-color dark-font-color collapsed-width") +
+            cardExpanded
           }
         >
           <button
@@ -55,6 +66,14 @@ const NewsArticle = (props) => {
           >
             <span aria-hidden="true">&times;</span>
           </button>
+          {/* <button
+            type="button"
+            className="close article-expand dark-font-color no-bs-border"
+            aria-label="Close"
+            onClick={() => expandCardClicked()}
+          >
+            <span aria-hidden="true">&times;</span>
+          </button> */}
           <div className="outer-article">
             <div className="body-container">
               <h1 className="article-title" ref={myRef}>
@@ -72,7 +91,7 @@ const NewsArticle = (props) => {
               <h2 className="author">
                 {item.author ? "Author: " + item.author : ""}
               </h2>
-              <h2 className="author na-blue-font">{item.publisher}</h2>
+              <h2 className="author na-blue-font bold">{item.publisher}</h2>
               <p className="author">{prettyDate}</p>
               <a
                 className="btn btn-dark custom-btn no-bs-border"
