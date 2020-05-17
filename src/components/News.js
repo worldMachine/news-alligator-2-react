@@ -15,11 +15,10 @@ function News(props) {
   const [items, setItems] = useState([]);
   const [open, setOpen] = useState(false);
   const [item, setItem] = useState("");
-  const [articlesPage, setArticlesPage] = useState(0);
 
-  const retrieveArticles = (pageNum) => {
+  const retrieveArticles = (latestDate) => {
     useNewsService
-      .getArticles(pageNum)
+      .getArticles(latestDate)
       .then((response) => {
         let newItems = items.concat(response.data);
         setItems(newItems);
@@ -31,29 +30,16 @@ function News(props) {
   };
 
   useEffect(() => {
-    retrieveArticles(0);
+    retrieveArticles(Date.now());
   }, []);
-
-  // useEffect(() => {
-  //   retrieveArticles(articlesPage);
-  // }, [articlesPage]);
 
   useEffect(() => {
     setIsLoaded(true);
   }, [items]);
 
-  // useEffect(() => {
-  //   console.log("colnum has changed: ", colNum);
-  // }, [colNum]);
-
-  // useEffect(() => {
-  //   console.log("open", open);
-  // }, [open]);
-
   const loadNextPage = () => {
-    let newPage = articlesPage + 1;
-    setArticlesPage(newPage);
-    retrieveArticles(newPage);
+    let lastItemDate = items[items.length - 1].pubDate;
+    retrieveArticles(lastItemDate);
   };
 
   if (error) {
