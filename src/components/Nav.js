@@ -3,6 +3,7 @@ import "./Nav.css";
 import "./theme.css";
 import News from "./News";
 import NavDropdown from "./NavDropdown";
+import logo from "../resources/alligator-logo-192.png";
 
 const Nav = (props) => {
   // const { showArticle, item, setOpen, isOpen } = props;
@@ -29,14 +30,18 @@ const Nav = (props) => {
     setTextImagePref(pref);
   };
 
+  // const hideImageDropDown = () => {
+  //   setIsImageToggleOn(false);
+  // };
+
   const show = menuOpen ? "show" : "";
 
   return (
     <React.Fragment>
       <div className="nav-container">
         <nav className="shadow navbar navbar-expand-lg navbar-dark dark-card-bg-color ">
-          <a className="navbar-brand  " href="/">
-            News Alligator 2
+          <a className="  " href="/">
+            <img src={logo} className="nav-logo" />
           </a>
           <button
             className="navbar-toggler no-bs-border"
@@ -59,6 +64,7 @@ const Nav = (props) => {
                 name="Columns"
                 setIsToggleOn={setIsToggleOn}
                 isToggleOn={isToggleOn}
+                // onClick={() => hideImageDropDown()}
               >
                 <button
                   onClick={() => colDropDownItemClicked(12)}
